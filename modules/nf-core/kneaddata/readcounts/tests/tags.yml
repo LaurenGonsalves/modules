@@ -1,0 +1,2 @@
+kneaddata/readcounts:
+  - "modules/nf-core/kneaddata/readcounts/**"

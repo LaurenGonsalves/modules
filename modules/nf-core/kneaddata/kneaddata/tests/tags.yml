@@ -1,0 +1,2 @@
+kneaddata/kneaddata:
+  - "modules/nf-core/kneaddata/kneaddata/**"

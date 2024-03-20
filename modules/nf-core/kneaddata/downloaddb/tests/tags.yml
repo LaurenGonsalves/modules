@@ -1,0 +1,2 @@
+kneaddata/downloaddb:
+  - "modules/nf-core/kneaddata/downloaddb/**"
