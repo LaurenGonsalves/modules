@@ -1,7 +1,7 @@
 nextflow_process {
 
     name "Test Process PANPHLAN_DOWNLOADPANGENOME"
-    script "modules/local/panphlan/downloadpangenome.nf"
+    script "modules/nf-core/panphlan/downloadpangenome/main.nf"
     process "PANPHLAN_DOWNLOADPANGENOME"
 
     test("Should run without failures") {

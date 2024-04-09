@@ -1,10 +1,21 @@
 nextflow_process {
 
     name "Test Process PANPHLAN_MAP"
-    script "modules/local/panphlan/map.nf"
+    script "modules/nf-core/panphlan/map/main.nf"
     process "PANPHLAN_MAP"
 
     test("Should run without failures") {
+
+            setup {
+                run("PANPHLAN_DOWNLOADPANGENOME") {
+                    script "modules/nf-core/panphlan/map/main.nf"
+                    process {
+                        """
+                        input[0] = "Bacteroides_fragilis"
+                        """
+                    }
+                }
+            }
 
         when {
             process {

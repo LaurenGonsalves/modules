@@ -1,29 +1,38 @@
 nextflow_process {
 
     name "Test Process PANPHLAN_PROFILING"
-    script "modules/local/panphlan/profiling.nf"
+    script "modules/nf-core/panphlan/profiling/main.nf"
     process "PANPHLAN_PROFILING"
 
     test("Should run without failures") {
 
             setup {
-                run("PANPHLAN_MAP") {
-                    script "modules/local/panphlan/map.nf"
+                run("PANPHLAN_DOWNLOADPANGENOME") {
+                    script "modules/nf-core/panphlan/downloadpangenome/main.nf"
                     process {
                         """
                         input[0] = "Bacteroides_fragilis"
-                        input[1] = "/workspace/biobakerymgx/modules/local/panphlan/test_data/Bacteroides_fragilis/Bacteroides_fragilis_pangenome.tsv" // replace w: PANPHLAN_DOWNLOADPANGENOME.out.pangenome
-                        input[2] = Channel.of (
+                        """
+                    }
+                }
+
+                run("PANPHLAN_MAP") {
+                    script "modules/nf-core/panphlan/map/main.nf"
+                    process {
+                        """
+                        input[0] = PANPHLAN_DOWNLOADPANGENOME.out.pangenome
+                        input[1] = Channel.of (
                             [
-                                file("/workspace/biobakerymgx/modules/local/panphlan/test_data/Bacteroides_fragilis/") //replace w: PANPHLAN_DOWNLOADPANGENOME.out.indexes
+                                PANPHLAN_DOWNLOADPANGENOME.out.indexes
                             ]
                         )
-                        input[3] = Channel.of (
+                        input[2] = Channel.of (
                             [
                                 [id:"test1_1", single_end:true ],
                                 file("https://github.com/nf-core/test-datasets/raw/modules/data/genomics/prokaryotes/bacteroides_fragilis/illumina/fastq/test1_1.fastq.gz")
                             ]
                         )
+                        input[3] = "Bacteroides_fragilis"
                         """
                     }
                 }
@@ -34,10 +43,9 @@ nextflow_process {
                 """
                 input[0] = PANPHLAN_MAP.out.mapping_file
                 input[1] = "Bacteroides_fragilis"
-                input[2] = "/workspace/biobakerymgx/modules/local/panphlan/test_data/Bacteroides_fragilis/Bacteroides_fragilis_pangenome.tsv" // replace w: PANPHLAN_DOWNLOADPANGENOME.out.pangenome
+                input[2] = PANPHLAN_DOWNLOADPANGENOME.out.pangenome
                 """
             }
-        }
 
         then {
             assert process.success
@@ -45,4 +53,6 @@ nextflow_process {
         }
 
     }
+
 }
+
