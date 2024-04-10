@@ -21,11 +21,8 @@ nextflow_process {
                     process {
                         """
                         input[0] = PANPHLAN_DOWNLOADPANGENOME.out.pangenome
-                        input[1] = Channel.of (
-                            [
-                                PANPHLAN_DOWNLOADPANGENOME.out.indexes
-                            ]
-                        )
+                        input[1] = PANPHLAN_DOWNLOADPANGENOME.out.indexes
+
                         input[2] = Channel.of (
                             [
                                 [id:"test1_1", single_end:true ],
@@ -55,4 +52,3 @@ nextflow_process {
     }
 
 }
-

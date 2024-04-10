@@ -8,7 +8,7 @@ process PANPHLAN_PROFILING {
         'biocontainers/mulled-v2-e3818ba00c0f15bcda92c714b4fa500c626067fe:cae224e6965f9abd8b08407231aff3bba632f1de-0' }"
 
     input:
-    tuple val(meta), path(map_results)
+    tuple val(meta), path(mapping_file)
     val(species_name)
     path(pangenome)
 
@@ -23,13 +23,12 @@ process PANPHLAN_PROFILING {
     script:
     def args = task.ext.args ?: ''
     def prefix = task.ext.prefix ?: "${meta.id}"
-
     """
     panphlan_profiling.py \\
-    -i ${map_results} \\
-    --o_matrix ${species_name}_profile.tsv \\
-    -p ${pangenome} \\
-    ${args}
+        -i ${map_results} \\
+        --o_matrix ${species_name}_profile.tsv \\
+        -p ${pangenome} \\
+        ${args}
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":

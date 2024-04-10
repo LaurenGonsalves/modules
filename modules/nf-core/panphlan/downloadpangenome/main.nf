@@ -10,20 +10,24 @@ process PANPHLAN_DOWNLOADPANGENOME {
     val(species_name)
 
     output:
-    path("*.bt2")               , emit: indexes
-    path("*_pangenome.tsv")     , emit: pangenome
-    path "versions.yml"         , emit: versions
+    path("indexes")                       , emit: indexes
+    path("${prefix}/*_pangenome.tsv")     , emit: pangenome
+    path "versions.yml"                   , emit: versions
 
     when:
     task.ext.when == null || task.ext.when
 
     script:
     def args = task.ext.args ?: ''
+    prefix = "${species_name}"
     """
     panphlan_download_pangenome.py \\
         -i ${species_name} \\
         -o . \\
         ${args}
+
+    mkdir indexes
+    mv ${prefix}/*.bt2 indexes
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":

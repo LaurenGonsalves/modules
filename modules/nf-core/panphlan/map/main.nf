@@ -28,7 +28,7 @@ process PANPHLAN_MAP {
         -p $pangenome \\
         --indexes ${indexes}/${species_name} \\
         -i ${sample_sequence} \\
-        -o map_results/${meta.id}_${species_name}.tsv \\
+        -o ${meta.id}_${species_name}.tsv \\
         ${args}
 
     cat <<-END_VERSIONS > versions.yml
