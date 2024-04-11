@@ -14,8 +14,8 @@ process PANPHLAN_MAP {
     val(species_name)
 
     output:
-    tuple val(meta), path("*.tsv"), emit: mapping_file
-    path "versions.yml"           , emit: versions
+    tuple val(meta), path("${species_name}_map")    , emit: mapping_dir
+    path "versions.yml"                             , emit: versions
 
     when:
     task.ext.when == null || task.ext.when
@@ -30,6 +30,9 @@ process PANPHLAN_MAP {
         -i ${sample_sequence} \\
         -o ${meta.id}_${species_name}.tsv \\
         ${args}
+
+    mkdir ${species_name}_map
+    mv ${meta.id}_${species_name}.tsv ${species_name}_map
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":

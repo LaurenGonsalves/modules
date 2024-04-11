@@ -4,8 +4,6 @@ nextflow_process {
     script "modules/nf-core/panphlan/profiling/main.nf"
     process "PANPHLAN_PROFILING"
 
-    test("Should run without failures") {
-
             setup {
                 run("PANPHLAN_DOWNLOADPANGENOME") {
                     script "modules/nf-core/panphlan/downloadpangenome/main.nf"
@@ -25,8 +23,9 @@ nextflow_process {
 
                         input[2] = Channel.of (
                             [
-                                [id:"test1_1", single_end:true ],
-                                file("https://github.com/nf-core/test-datasets/raw/modules/data/genomics/prokaryotes/bacteroides_fragilis/illumina/fastq/test1_1.fastq.gz")
+                            [id:"test1", single_end:false ],
+                                    file("https://github.com/nf-core/test-datasets/raw/modules/data/genomics/prokaryotes/bacteroides_fragilis/illumina/fastq/test1_1.fastq.gz"),
+                                    file("https://github.com/nf-core/test-datasets/raw/modules/data/genomics/prokaryotes/bacteroides_fragilis/illumina/fastq/test1_2.fastq.gz")
                             ]
                         )
                         input[3] = "Bacteroides_fragilis"
@@ -34,15 +33,17 @@ nextflow_process {
                     }
                 }
             }
-
-        when
+    test("Should run without failures") {
+        when {
             process {
                 """
-                input[0] = PANPHLAN_MAP.out.mapping_file
-                input[1] = "Bacteroides_fragilis"
-                input[2] = PANPHLAN_DOWNLOADPANGENOME.out.pangenome
+                input[0] = PANPHLAN_MAP.out.mapping_dir
+                input[1] = PANPHLAN_DOWNLOADPANGENOME.out.pangenome
+                input[2] = "Bacteroides_fragilis"
+
                 """
             }
+        }
 
         then {
             assert process.success
