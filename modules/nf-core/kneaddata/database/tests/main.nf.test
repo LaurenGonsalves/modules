@@ -1,13 +1,14 @@
 nextflow_process {
 
-    name "Test Process KNEADDATA_DOWNLOADDB"
+    name "Test Process: KNEADDATA_DATABASE"
     script "../main.nf"
-    process "KNEADDATA_DOWNLOADDB"
+    process "KNEADDATA_DATABASE"
 
     tag "modules"
     tag "modules_local"
     tag "kneaddata"
-    tag "kneaddata/downloaddb"
+    tag "kneaddata/database"
+
 
     test(" kneaddata_db_type = 'human_genome' ") {
 
@@ -18,15 +19,14 @@ nextflow_process {
         }
 
         then {
-            assertAll(
+            assertAll (
                 { assert process.success },
                 { assert snapshot(process.out).match() }
             )
         }
-
     }
 
-    test(" kneaddata_db_type = 'human_genome' - stub") {
+    test(" kneaddata_db_type = 'human_genome' -stub ") {
 
         options "-stub"
 
@@ -37,12 +37,10 @@ nextflow_process {
         }
 
         then {
-            assertAll(
+            assertAll (
                 { assert process.success },
                 { assert snapshot(process.out).match() }
             )
         }
-
     }
-
 }

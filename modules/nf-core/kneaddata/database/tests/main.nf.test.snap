@@ -1,0 +1,52 @@
+{
+    " kneaddata_db_type = 'human_genome' -stub ": {
+        "content": [
+            {
+                "0": [
+                    [
+                        
+                    ]
+                ],
+                "1": [
+                    "versions.yml:md5,0646f91b50d4594b42968bc1361c6f1d"
+                ],
+                "kneaddata_db": [
+                    [
+                        
+                    ]
+                ],
+                "versions": [
+                    "versions.yml:md5,0646f91b50d4594b42968bc1361c6f1d"
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.8.4",
+            "nextflow": "23.10.1"
+        },
+        "timestamp": "2024-04-12T22:31:48.269453106"
+    },
+    " kneaddata_db_type = 'human_genome' ": {
+        "content": [
+            {
+                "0": [
+                    
+                ],
+                "1": [
+                    
+                ],
+                "kneaddata_db": [
+                    
+                ],
+                "versions": [
+                    
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.8.4",
+            "nextflow": "23.10.1"
+        },
+        "timestamp": "2024-04-12T22:31:37.653605558"
+    }
+}
