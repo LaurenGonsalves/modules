@@ -26,10 +26,9 @@ nextflow_process {
                 input[2] = Channel.of (
                     [
                     [id:"test1", single_end:false ],
-                            file("https://github.com/nf-core/test-datasets/raw/modules/data/genomics/prokaryotes/bacteroides_fragilis/illumina/fastq/test1_1.fastq.gz"),
-                            file("https://github.com/nf-core/test-datasets/raw/modules/data/genomics/prokaryotes/bacteroides_fragilis/illumina/fastq/test1_2.fastq.gz")
-
+                        file("https://github.com/nf-core/test-datasets/raw/modules/data/genomics/prokaryotes/bacteroides_fragilis/illumina/fastq/test1_1.fastq.gz")
                     ]
+
                 )
                 input[3] = "Bacteroides_fragilis"
 

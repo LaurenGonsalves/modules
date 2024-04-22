@@ -1,0 +1,37 @@
+{
+    "Should run without failures": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test1",
+                            "single_end": false
+                        },
+                        "Bacteroides_fragilis_profile.tsv:md5,57201aadb842ec33e54aac93dcd548e2"
+                    ]
+                ],
+                "1": [
+                    "versions.yml:md5,09cf69e7738a738a3ae5fbc93b024b95"
+                ],
+                "profile_matrix": [
+                    [
+                        {
+                            "id": "test1",
+                            "single_end": false
+                        },
+                        "Bacteroides_fragilis_profile.tsv:md5,57201aadb842ec33e54aac93dcd548e2"
+                    ]
+                ],
+                "versions": [
+                    "versions.yml:md5,09cf69e7738a738a3ae5fbc93b024b95"
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.8.4",
+            "nextflow": "23.10.1"
+        },
+        "timestamp": "2024-04-15T22:21:46.524551399"
+    }
+}
