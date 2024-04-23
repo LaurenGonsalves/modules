@@ -1,9 +1,9 @@
-
 nextflow_process {
 
     name "Test Process: KNEADDATA_KNEADDATA"
     script "../main.nf"
     process "KNEADDATA_KNEADDATA"
+    config "./nextflow.config"
 
     tag "modules"
     tag "modules_local"

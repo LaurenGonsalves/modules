@@ -1,0 +1,72 @@
+{
+    "homo_sapiens - illumina - paired_end_fastq_gz": {
+        "content": [
+            [
+                
+            ],
+            [
+                
+            ]
+        ],
+        "meta": {
+            "nf-test": "0.8.4",
+            "nextflow": "23.10.1"
+        },
+        "timestamp": "2024-04-23T00:21:02.409597642"
+    },
+    "homo_sapiens - illumina - paired_end_fastq_gz - stub": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        [
+                            "test_kneaddata_paired_1.fastq.gz:md5,d41d8cd98f00b204e9800998ecf8427e",
+                            "test_kneaddata_paired_2.fastq.gz:md5,d41d8cd98f00b204e9800998ecf8427e"
+                        ]
+                    ]
+                ],
+                "1": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test_kneaddata.log:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "2": [
+                    "versions.yml:md5,0dfc969a58fd168cbcd4a9ee87f0c28d"
+                ],
+                "kneaddata_log": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test_kneaddata.log:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "preprocessed_reads": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        [
+                            "test_kneaddata_paired_1.fastq.gz:md5,d41d8cd98f00b204e9800998ecf8427e",
+                            "test_kneaddata_paired_2.fastq.gz:md5,d41d8cd98f00b204e9800998ecf8427e"
+                        ]
+                    ]
+                ],
+                "versions": [
+                    "versions.yml:md5,0dfc969a58fd168cbcd4a9ee87f0c28d"
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.8.4",
+            "nextflow": "23.10.1"
+        },
+        "timestamp": "2024-04-23T00:21:13.256817898"
+    }
+}
