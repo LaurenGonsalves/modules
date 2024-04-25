@@ -10,7 +10,7 @@ nextflow_process {
     tag "kneaddata/database"
 
 
-    test(" kneaddata_db_type = 'human_genome' ") {
+    test(" 'human_genome' ") {
 
         when {
             process {
@@ -28,7 +28,7 @@ nextflow_process {
         }
     }
 
-    test(" kneaddata_db_type = 'human_genome' -stub ") {
+    test("'human_genome' -stub ") {
 
         options "-stub"
 

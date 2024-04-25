@@ -1,0 +1,50 @@
+nextflow_workflow {
+
+    name "Test Subworkflow: FASTQ_READ_PREPROCESSING_KNEADDATA"
+    script "../main.nf"
+    workflow "FASTQ_READ_PREPROCESSING_KNEADDATA"
+
+    tag "subworkflows"
+    tag "subworkflows_local"
+    tag "fastq_read_preprocessing_kneaddata"
+    tag "fastq_read_preprocessing_kneaddata_default"
+
+
+    test(" fasta.gz + 'human_genome' ") {
+
+        when {
+            params {
+                max_cpus = 1
+            }
+            workflow {
+                """
+                input[0] = Channel.of(
+                    [
+                        [ id: 'test' ],
+                        [
+                            file(params.modules_testdata_base_path + "genomics/sarscov2/illumina/fastq/test_1.fastq.gz", checkIfExists: true),
+                            file(params.modules_testdata_base_path + "genomics/sarscov2/illumina/fastq/test_2.fastq.gz", checkIfExists: true)
+                        ]
+                    ],
+                    [
+                        [ id: 'test2' ],
+                        [
+                            file(params.modules_testdata_base_path + "genomics/sarscov2/illumina/fastq/test2_1.fastq.gz", checkIfExists: true),
+                            file(params.modules_testdata_base_path + "genomics/sarscov2/illumina/fastq/test2_2.fastq.gz", checkIfExists: true)
+                        ]
+                    ]
+                )
+                input[1] = null
+                input[2] = 'human_genome'
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert workflow.success },
+                { assert snapshot(workflow.out).match() }
+            )
+        }
+    }
+}

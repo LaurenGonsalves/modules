@@ -1,0 +1,2 @@
+subworkflows/fastq_read_preprocessing_kneaddata:
+  - subworkflows/nf-core/fastq_read_preprocessing_kneaddata/**

@@ -1,5 +1,5 @@
 process KNEADDATA_DATABASE {
-    tag "$kneaddata_db_type"
+    tag "${kneaddata_db_type}"
     label 'process_single'
 
     conda "${moduleDir}/environment.yml"
@@ -8,11 +8,11 @@ process KNEADDATA_DATABASE {
         'biocontainers/kneaddata:0.12.0--pyhdfd78af_1' }"
 
     input:
-    val(kneaddata_db_type)
+    val kneaddata_db_type
 
     output:
-    path "kneaddata_${kneaddata_db_type}/"          , emit: kneaddata_db
-    path "versions.yml"                             , emit: versions
+    path "kneaddata_${kneaddata_db_type}/"  , emit: kneaddata_db
+    path "versions.yml"                     , emit: versions
 
     when:
     task.ext.when == null || task.ext.when
