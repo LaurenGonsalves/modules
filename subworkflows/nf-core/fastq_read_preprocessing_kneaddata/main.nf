@@ -2,9 +2,9 @@
 // SUBWORKFLOW: Trim, remove human reads, and calculate read counts with KneadData
 //
 
-include { KNEADDATA_DATABASE            } from '../../../modules/local/kneaddata/database/main'
-include { KNEADDATA_KNEADDATA           } from '../../../modules/local/kneaddata/kneaddata/main'
-include { KNEADDATA_READCOUNTS          } from '../../../modules/local/kneaddata/readcounts/main'
+include { KNEADDATA_DATABASE            } from '../../../modules/nf-core/kneaddata/database/main'
+include { KNEADDATA_KNEADDATA           } from '../../../modules/nf-core/kneaddata/kneaddata/main'
+include { KNEADDATA_READCOUNTS          } from '../../../modules/nf-core/kneaddata/readcounts/main'
 
 workflow FASTQ_READ_PREPROCESSING_KNEADDATA {
 
